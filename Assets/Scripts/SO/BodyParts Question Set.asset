@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c106b5f40a6f0469075f42beb221a2, type: 3}
+  m_Name: BodyParts Question Set
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSet
+  theme: 1
+  questions:
+  - questionTexts:
+    - questionTextEnglish: Where is the ankle?
+      questionTextFrench: "O\xF9 est la cheville?"
+    - questionTextEnglish: Can you find ankle?
+      questionTextFrench: Peux-tu trouver la cheville?
+    correctPartName: ankel
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is the arm?
+      questionTextFrench: "O\xF9 est le bras ?"
+    - questionTextEnglish: Can you find arm?
+      questionTextFrench: Peux-tu trouver le bras?
+    correctPartName: arm
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is the body?
+      questionTextFrench: "O\xF9 est le corps?"
+    - questionTextEnglish: Can you find body?
+      questionTextFrench: Peux-tu trouver le corps?
+    correctPartName: body
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where are ears?
+      questionTextFrench: "O\xF9 sont les oreilles ?"
+    - questionTextEnglish: Which part helps hear?
+      questionTextFrench: "Quelle partie aide \xE0 entendre?"
+    correctPartName: ears
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is your eye?
+      questionTextFrench: "O\xF9 est ton \u0153il?"
+    - questionTextEnglish: Which part helps see?
+      questionTextFrench: "Quelle partie aide \xE0 voir?"
+    correctPartName: eye
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Can you find eyebrows?
+      questionTextFrench: Peux-tu trouver les sourcils?
+    - questionTextEnglish: Where are eybrows?
+      questionTextFrench: "O\xF9 sont les sourcils?"
+    correctPartName: eyebrows
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is your face?
+      questionTextFrench: "O\xF9 est ton visage?"
+    - questionTextEnglish: Can you find face?
+      questionTextFrench: Peux-tu trouver le visage?
+    correctPartName: face
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where are your fingers?
+      questionTextFrench: "O\xF9 sont tes doigts?"
+    - questionTextEnglish: Which part helps hold?
+      questionTextFrench: "Quelle partie aide \xE0 tenir?"
+    correctPartName: fingers
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Can you find foot?
+      questionTextFrench: Peux-tu trouver le pied?
+    - questionTextEnglish: Which part helps walk?
+      questionTextFrench: "Quelle partie aide \xE0 marcher?"
+    correctPartName: foot
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where are hairs?
+      questionTextFrench: "O\xF9 sont les cheveux?"
+    - questionTextEnglish: Can you find hair?
+      questionTextFrench: Peux-tu trouver les cheveux?
+    correctPartName: hairs
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is hand?
+      questionTextFrench: "O\xF9 est la main?"
+    - questionTextEnglish: Which part helps write?
+      questionTextFrench: "Quelle partie aide \xE0 \xE9crire?"
+    correctPartName: hand
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Can you find heel?
+      questionTextFrench: Peux-tu trouver le talon?
+    - questionTextEnglish: Where is heel?
+      questionTextFrench: "O\xF9 est le talon?"
+    correctPartName: heel
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is knee?
+      questionTextFrench: "O\xF9 est le genou?"
+    - questionTextEnglish: Which part helps bend?
+      questionTextFrench: "Quelle partie aide \xE0 plier?"
+    correctPartName: knee
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Can you find leg?
+      questionTextFrench: Peux-tu trouver la jambe?
+    - questionTextEnglish: Which part helps run?
+      questionTextFrench: "Quelle partie aide \xE0 courir?"
+    correctPartName: leg
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is mouth?
+      questionTextFrench: "O\xF9 est la bouche?"
+    - questionTextEnglish: Which part helps eat?
+      questionTextFrench: "Quelle partie aide \xE0 manger?"
+    correctPartName: mouth
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Can you find neck?
+      questionTextFrench: Peux-tu trouver le cou?
+    - questionTextEnglish: Where is neck?
+      questionTextFrench: "O\xF9 est le cou?"
+    correctPartName: neck
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is nose?
+      questionTextFrench: "O\xF9 est le nez?"
+    - questionTextEnglish: Which part helps smell?
+      questionTextFrench: "Quelle partie aide \xE0 sentir?"
+    correctPartName: nose
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Can you find shoulder?
+      questionTextFrench: "Peux-tu trouver l\u2019\xE9paule?"
+    - questionTextEnglish: Which part helps lift?
+      questionTextFrench: "Quelle partie aide \xE0 soulever?"
+    correctPartName: shoulder
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is thumb?
+      questionTextFrench: "O\xF9 est le pouce?"
+    - questionTextEnglish: Which part helps grip?
+      questionTextFrench: "Quelle partie aide \xE0 saisir?"
+    correctPartName: thumb
+    preferredSide: 0

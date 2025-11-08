@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c106b5f40a6f0469075f42beb221a2, type: 3}
+  m_Name: Skeleton Question Set
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSet
+  theme: 2
+  questions:
+  - questionTexts:
+    - questionTextEnglish: Where is cranium?
+      questionTextFrench: "O\xF9 est le cr\xE2ne?"
+    - questionTextEnglish: Can you find cranium?
+      questionTextFrench: "Peux-tu trouver le cr\xE2ne?"
+    - questionTextEnglish: Which bone protects brain?
+      questionTextFrench: "Quel os prot\xE8ge le cerveau?"
+    - questionTextEnglish: What bone is head?
+      questionTextFrench: "Quel os est la t\xEAte?"
+    correctPartName: cranium
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is femur?
+      questionTextFrench: "O\xF9 est le f\xE9mur?"
+    - questionTextEnglish: Can you find femur?
+      questionTextFrench: "Peux-tu trouver le f\xE9mur?"
+    - questionTextEnglish: Which bone helps walk?
+      questionTextFrench: "Quel os aide \xE0 marcher?"
+    - questionTextEnglish: What bone is thigh?
+      questionTextFrench: Quel os est la cuisse?
+    correctPartName: femur
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is fibula?
+      questionTextFrench: "O\xF9 est le p\xE9ron\xE9?"
+    - questionTextEnglish: Can you find fibula?
+      questionTextFrench: "Peux-tu trouver le p\xE9ron\xE9?"
+    - questionTextEnglish: Which bone helps leg?
+      questionTextFrench: Quel os aide la jambe?
+    - questionTextEnglish: What bone is calf?
+      questionTextFrench: Quel os est le mollet?
+    correctPartName: fibula
+    preferredSide: 1
+  - questionTexts:
+    - questionTextEnglish: Where is humerus?
+      questionTextFrench: "O\xF9 est l\u2019hum\xE9rus?"
+    - questionTextEnglish: Can you find humerus?
+      questionTextFrench: "Peux-tu trouver l\u2019hum\xE9rus?"
+    - questionTextEnglish: Which bone helps arm?
+      questionTextFrench: Quel os aide le bras?
+    - questionTextEnglish: What bone is upper arm?
+      questionTextFrench: "Quel os est le bras sup\xE9rieur?"
+    correctPartName: humerus
+    preferredSide: 1
+  - questionTexts:
+    - questionTextEnglish: Where is kneecap?
+      questionTextFrench: "O\xF9 est la rotule?"
+    - questionTextEnglish: Can you find kneecap?
+      questionTextFrench: Peux-tu trouver la rotule?
+    - questionTextEnglish: Which bone helps knee?
+      questionTextFrench: Quel os aide le genou?
+    - questionTextEnglish: What bone covers knee?
+      questionTextFrench: Quel os couvre le genou?
+    correctPartName: kneecap
+    preferredSide: 1
+  - questionTexts:
+    - questionTextEnglish: Where are ribs?
+      questionTextFrench: "O\xF9 sont les c\xF4tes?"
+    - questionTextEnglish: Can you find ribs?
+      questionTextFrench: "Peux-tu trouver les c\xF4tes?"
+    - questionTextEnglish: Which bone protects lungs?
+      questionTextFrench: "Quel os prot\xE8ge les poumons?"
+    - questionTextEnglish: What bone makes chest?
+      questionTextFrench: Quel os forme la poitrine?
+    correctPartName: ribs
+    preferredSide: 1
+  - questionTexts:
+    - questionTextEnglish: Where is shinbone?
+      questionTextFrench: "O\xF9 est le tibia?"
+    - questionTextEnglish: Can you find shinbone?
+      questionTextFrench: Peux-tu trouver le tibia?
+    - questionTextEnglish: Which bone helps stand?
+      questionTextFrench: "Quel os aide \xE0 se tenir debout?"
+    - questionTextEnglish: What bone is shin?
+      questionTextFrench: Quel os est le tibia?
+    correctPartName: shinbone
+    preferredSide: 1
+  - questionTexts:
+    - questionTextEnglish: Where is metacarpals?
+      questionTextFrench: "O\xF9 sont les m\xE9tacarpiens?"
+    - questionTextEnglish: Can you find metacarpals?
+      questionTextFrench: "Pouvez-vous trouver les m\xE9tacarpiens?"
+    - questionTextEnglish: Which bone helps grip?
+      questionTextFrench: "Quel os aide \xE0 la pr\xE9hension?"
+    correctPartName: metacarpals
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is clavicle?
+      questionTextFrench: "O\xF9 est la clavicule?"
+    - questionTextEnglish: Can you find clavicle?
+      questionTextFrench: Pouvez-vous trouver la clavicule?
+    - questionTextEnglish: Which is colorbone?
+      questionTextFrench: Lequel est colorbone?
+    correctPartName: clavicle
+    preferredSide: 0

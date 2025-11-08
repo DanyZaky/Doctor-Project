@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c106b5f40a6f0469075f42beb221a2, type: 3}
+  m_Name: System Question Set
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSet
+  theme: 5
+  questions:
+  - questionTexts:
+    - questionTextEnglish: Where is circulatory system?
+      questionTextFrench: "O\xF9 est le syst\xE8me circulatoire?"
+    - questionTextEnglish: Which system pumps blood?
+      questionTextFrench: "Quel syst\xE8me pompe le sang?"
+    - questionTextEnglish: Can you find circulatory system?
+      questionTextFrench: "Peux-tu trouver le syst\xE8me circulatoire?"
+    - questionTextEnglish: What system carries blood?
+      questionTextFrench: "Quel syst\xE8me transporte le sang?"
+    - questionTextEnglish: Which system has heart?
+      questionTextFrench: "Quel syst\xE8me contient le c\u0153ur?"
+    correctPartName: circulatory
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is digestive system?
+      questionTextFrench: "O\xF9 est le syst\xE8me digestif?"
+    - questionTextEnglish: Which system digests food?
+      questionTextFrench: "Quel syst\xE8me dig\xE8re la nourriture?"
+    - questionTextEnglish: Can you find digestive system?
+      questionTextFrench: "Peux-tu trouver le syst\xE8me digestif?"
+    - questionTextEnglish: What system breaks food?
+      questionTextFrench: "Quel syst\xE8me d\xE9compose la nourriture?"
+    - questionTextEnglish: Which system has stomach?
+      questionTextFrench: "Quel syst\xE8me contient l\u2019estomac?"
+    correctPartName: digestive
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is nervous system?
+      questionTextFrench: "O\xF9 est le syst\xE8me nerveux?"
+    - questionTextEnglish: Which system controls body?
+      questionTextFrench: "Quel syst\xE8me contr\xF4le le corps?"
+    - questionTextEnglish: Can you find nervous system?
+      questionTextFrench: "Peux-tu trouver le syst\xE8me nerveux?"
+    - questionTextEnglish: What system sends signals?
+      questionTextFrench: "Quel syst\xE8me envoie des signaux?"
+    - questionTextEnglish: Which system has brain?
+      questionTextFrench: "Quel syst\xE8me contient le cerveau?"
+    correctPartName: nervous
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is respiratory system?
+      questionTextFrench: "O\xF9 est le syst\xE8me respiratoire?"
+    - questionTextEnglish: Which system helps breathe?
+      questionTextFrench: "Quel syst\xE8me aide \xE0 respirer?"
+    - questionTextEnglish: Can you find respiratory system?
+      questionTextFrench: "Peux-tu trouver le syst\xE8me respiratoire?"
+    - questionTextEnglish: What system takes oxygen?
+      questionTextFrench: "Quel syst\xE8me prend l\u2019oxyg\xE8ne?"
+    - questionTextEnglish: Which system has lungs?
+      questionTextFrench: "Quel syst\xE8me contient les poumons?"
+    correctPartName: respiratory
+    preferredSide: 0

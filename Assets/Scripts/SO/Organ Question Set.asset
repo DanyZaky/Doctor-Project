@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c106b5f40a6f0469075f42beb221a2, type: 3}
+  m_Name: Organ Question Set
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSet
+  theme: 0
+  questions:
+  - questionTexts:
+    - questionTextEnglish: Where is brain?
+      questionTextFrench: "O\xF9 est le cerveau?"
+    - questionTextEnglish: Can you find brain?
+      questionTextFrench: Peux-tu trouver le cerveau?
+    - questionTextEnglish: Which organ helps think?
+      questionTextFrench: "Quel organe aide \xE0 penser?"
+    - questionTextEnglish: What organ controls body?
+      questionTextFrench: "Quel organe contr\xF4le le corps?"
+    correctPartName: brain
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is heart?
+      questionTextFrench: "O\xF9 est le c\u0153ur?"
+    - questionTextEnglish: Can you find heart?
+      questionTextFrench: "Peux-tu trouver le c\u0153ur?"
+    - questionTextEnglish: Which organ helps pump blood?
+      questionTextFrench: "Quel organe aide \xE0 pomper le sang?"
+    - questionTextEnglish: What organ beats always?
+      questionTextFrench: Quel organe bat toujours?
+    correctPartName: heart
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is large intestine?
+      questionTextFrench: "O\xF9 est le gros intestin?"
+    - questionTextEnglish: Can you find large intestine?
+      questionTextFrench: Peux-tu trouver le gros intestin?
+    - questionTextEnglish: Which organ helps digest?
+      questionTextFrench: "Quel organe aide \xE0 dig\xE9rer?"
+    - questionTextEnglish: What organ makes waste?
+      questionTextFrench: "Quel organe produit les d\xE9chets?"
+    correctPartName: large intestine
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is liver?
+      questionTextFrench: "O\xF9 est le foie?"
+    - questionTextEnglish: Can you find liver?
+      questionTextFrench: Peux-tu trouver le foie?
+    - questionTextEnglish: Which organ cleans blood?
+      questionTextFrench: Quel organe nettoie le sang?
+    - questionTextEnglish: What organ makes bile?
+      questionTextFrench: Quel organe produit la bile?
+    correctPartName: liver
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where are lungs?
+      questionTextFrench: "O\xF9 sont les poumons?"
+    - questionTextEnglish: Can you find lungs?
+      questionTextFrench: Peux-tu trouver les poumons?
+    - questionTextEnglish: Which organ helps breathe?
+      questionTextFrench: "Quel organe aide \xE0 respirer?"
+    - questionTextEnglish: What organ gives oxygen?
+      questionTextFrench: "Quel organe donne de l\u2019oxyg\xE8ne?"
+    correctPartName: lungs
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is small intestine?
+      questionTextFrench: "O\xF9 est l\u2019intestin gr\xEAle?"
+    - questionTextEnglish: Can you find small intestine?
+      questionTextFrench: "Peux-tu trouver l\u2019intestin gr\xEAle?"
+    - questionTextEnglish: Which organ helps absorb food?
+      questionTextFrench: "Quel organe aide \xE0 absorber la nourriture?"
+    - questionTextEnglish: What organ digests food?
+      questionTextFrench: "Quel organe dig\xE8re la nourriture?"
+    correctPartName: small intestine
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is stomach?
+      questionTextFrench: "O\xF9 est l\u2019estomac?"
+    - questionTextEnglish: Can you find stomach?
+      questionTextFrench: "Peux-tu trouver l\u2019estomac?"
+    - questionTextEnglish: Which organ helps digest food?
+      questionTextFrench: "Quel organe aide \xE0 dig\xE9rer la nourriture?"
+    - questionTextEnglish: What organ holds food?
+      questionTextFrench: Quel organe contient la nourriture?
+    correctPartName: stomach
+    preferredSide: 0

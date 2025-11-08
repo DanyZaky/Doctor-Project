@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c106b5f40a6f0469075f42beb221a2, type: 3}
+  m_Name: Muscles QuestionSet
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSet
+  theme: 3
+  questions:
+  - questionTexts:
+    - questionTextEnglish: Where is abdominal?
+      questionTextFrench: "O\xF9 est l\u2019abdomen?"
+    - questionTextEnglish: Which muscle helps bend?
+      questionTextFrench: "Quel muscle aide \xE0 plier?"
+    - questionTextEnglish: Can you find abdominal?
+      questionTextFrench: "Peux-tu trouver l\u2019abdomen?"
+    correctPartName: abdominal
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Can you find biceps?
+      questionTextFrench: Peux-tu trouver le biceps?
+    - questionTextEnglish: Which are biceps?
+      questionTextFrench: Quels sont les biceps?
+    - questionTextEnglish: Where is biceps?
+      questionTextFrench: "O\xF9 est le biceps?"
+    correctPartName: biceps
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is deltoid?
+      questionTextFrench: "O\xF9 est le delto\xEFde?"
+    - questionTextEnglish: Which muscle helps arm?
+      questionTextFrench: Quel muscle aide le bras?
+    - questionTextEnglish: Can you find deltoid?
+      questionTextFrench: "Peux-tu trouver le delto\xEFde?"
+    correctPartName: deltoids
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where is gluteus?
+      questionTextFrench: "O\xF9 est le fessier?"
+    - questionTextEnglish: Which muscle helps sit?
+      questionTextFrench: "Quel muscle aide \xE0 s\u2019asseoir?"
+    - questionTextEnglish: Can you find gluteus?
+      questionTextFrench: Peux-tu trouver le fessier?
+    correctPartName: gluteus
+    preferredSide: 1
+  - questionTexts:
+    - questionTextEnglish: Can you find pectoral?
+      questionTextFrench: Peux-tu trouver le pectoral?
+    - questionTextEnglish: Which muscle helps push?
+      questionTextFrench: "Quel muscle aide \xE0 pousser?"
+    - questionTextEnglish: Where is pectoral?
+      questionTextFrench: "O\xF9 est le pectoral?"
+    correctPartName: pectoral
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Where are quadriceps?
+      questionTextFrench: "O\xF9 sont les quadriceps?"
+    - questionTextEnglish: Which muscle helps jump?
+      questionTextFrench: "Quel muscle aide \xE0 sauter?"
+    - questionTextEnglish: Can you find quadriceps?
+      questionTextFrench: Peux-tu trouver les quadriceps?
+    correctPartName: quadriceps
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Can you find triceps?
+      questionTextFrench: Peux-tu trouver le triceps?
+    - questionTextEnglish: where are triceps?
+      questionTextFrench: "O\xF9 sont les triceps?"
+    - questionTextEnglish: Which muscle helps push?
+      questionTextFrench: "Quel muscle aide \xE0 pousser?"
+    correctPartName: triceps
+    preferredSide: 1

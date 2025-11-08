@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c106b5f40a6f0469075f42beb221a2, type: 3}
+  m_Name: Senses Question Set
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSet
+  theme: 4
+  questions:
+  - questionTexts:
+    - questionTextEnglish: Where is hearing sense?
+      questionTextFrench: "O\xF9 est le sens de l\u2019ou\xEFe?"
+    - questionTextEnglish: Can you find hearing sense?
+      questionTextFrench: "Peux-tu trouver le sens de l\u2019ou\xEFe?"
+    - questionTextEnglish: Which sense helps listen?
+      questionTextFrench: "Quel sens aide \xE0 \xE9couter?"
+    - questionTextEnglish: What sense hears sound?
+      questionTextFrench: Quel sens entend les sons?
+    - questionTextEnglish: Which sense hears music?
+      questionTextFrench: Quel sens entend la musique?
+    - questionTextEnglish: What sense hears voice?
+      questionTextFrench: Quel sens entend la voix?
+    correctPartName: hearing
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Which has sight sense?
+      questionTextFrench: Qui a le sens de la vue?
+    - questionTextEnglish: Can you find sight sense?
+      questionTextFrench: Peux-tu trouver le sens de la vue?
+    - questionTextEnglish: Which sense helps see?
+      questionTextFrench: "Quel sens aide \xE0 voir?"
+    - questionTextEnglish: What sense sees light?
+      questionTextFrench: "Quel sens voit la lumi\xE8re?"
+    - questionTextEnglish: Which sense sees color?
+      questionTextFrench: Quel sens voit les couleurs?
+    - questionTextEnglish: What sense sees shape?
+      questionTextFrench: Quel sens voit les formes?
+    correctPartName: sight
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Which has smell sense?
+      questionTextFrench: "Qui a le sens de l\u2019odorat?"
+    - questionTextEnglish: Can you find smell sense?
+      questionTextFrench: "Peux-tu trouver le sens de l\u2019odorat?"
+    - questionTextEnglish: Which sense helps smell?
+      questionTextFrench: Which sense helps smell?
+    - questionTextEnglish: What sense smells food?
+      questionTextFrench: Quel sens sent la nourriture?
+    - questionTextEnglish: Which sense smells flower?
+      questionTextFrench: Quel sens sent la fleur?
+    - questionTextEnglish: What sense smells smoke?
+      questionTextFrench: "Quel sens sent la fum\xE9e?"
+    correctPartName: smell
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Which has taste sense?
+      questionTextFrench: "Qui a le sens du go\xFBt?"
+    - questionTextEnglish: Can you find taste sense?
+      questionTextFrench: "Peux-tu trouver le sens du go\xFBt?"
+    - questionTextEnglish: Which sense helps taste?
+      questionTextFrench: "Quel sens aide \xE0 go\xFBter?"
+    - questionTextEnglish: What sense tastes food?
+      questionTextFrench: "Quel sens go\xFBte la nourriture?"
+    - questionTextEnglish: Which sense tastes sweet?
+      questionTextFrench: "Quel sens go\xFBte le sucr\xE9?"
+    - questionTextEnglish: What sense tastes sour?
+      questionTextFrench: "Quel sens go\xFBte l\u2019acide?"
+    correctPartName: taste
+    preferredSide: 0
+  - questionTexts:
+    - questionTextEnglish: Which has touch sense?
+      questionTextFrench: Qui a le sens du toucher?
+    - questionTextEnglish: Can you find touch sense?
+      questionTextFrench: Peux-tu trouver le sens du toucher?
+    - questionTextEnglish: Which sense helps feel?
+      questionTextFrench: "Quel sens aide \xE0 sentir?"
+    - questionTextEnglish: What sense feels heat?
+      questionTextFrench: Quel sens ressent la chaleur?
+    - questionTextEnglish: Which sense feels soft?
+      questionTextFrench: Quel sens ressent le doux?
+    - questionTextEnglish: What sense feels hard?
+      questionTextFrench: Quel sens ressent le dur?
+    correctPartName: touch
+    preferredSide: 0
