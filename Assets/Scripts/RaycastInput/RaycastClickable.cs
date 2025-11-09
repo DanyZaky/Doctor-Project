@@ -10,8 +10,21 @@ public class RaycastClickable : MonoBehaviour, IRaycastClickHandler
     [Header("Event called after delay & valid hold")]
     public UnityEvent onClick;
 
+    private UIButtonEnhancer buttonEnhancer;
+
+    void Awake()
+    {
+        buttonEnhancer = GetComponent<UIButtonEnhancer>();
+    }
+
     public void OnRaycastClick()
     {
+        // Trigger animation if UIButtonEnhancer is present
+        if (buttonEnhancer != null)
+        {
+            buttonEnhancer.OnRaycastClick();
+        }
+
         onClick?.Invoke();
     }
 }

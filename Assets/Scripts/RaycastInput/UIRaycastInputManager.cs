@@ -8,20 +8,24 @@ using UnityEngine.InputSystem; // NEW INPUT SYSTEM
 public class UIRaycastInputManager : MonoBehaviour
 {
     [Header("References")]
-    public GraphicRaycaster raycaster;   // dari Canvas
-    public EventSystem eventSystem;      // EventSystem di scene
+    public GraphicRaycaster raycaster;   // from Canvas
+    public EventSystem eventSystem;      // EventSystem in the scene
 
     [Header("Delays")]
-    public float uiButtonDelay = 2f;     // untuk UI biasa
-    public float gameplayDelay = 0.4f;   // untuk elemen gameplay
+    public float uiButtonDelay = 2f;     // for regular UI
+    public float gameplayDelay = 0.4f;   // for gameplay elements
 
     private bool isPressing;
     private RaycastClickable currentClickable;
     private Coroutine delayRoutine;
 
+    // For hover detection
+    private RaycastClickable currentHoveredClickable;
+    private UIButtonEnhancer currentHoveredEnhancer;
+
     void Update()
     {
-        // Prioritas: touch (Android/device)
+        // Priority: touch (Android/device)
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame
             || Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed
             || Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasReleasedThisFrame)
@@ -44,6 +48,9 @@ public class UIRaycastInputManager : MonoBehaviour
 
         Vector2 pos = mouse.position.ReadValue();
 
+        // Handle hover detection
+        HandleHover(pos);
+
         if (mouse.leftButton.wasPressedThisFrame)
             StartPress(pos);
 
@@ -60,6 +67,10 @@ public class UIRaycastInputManager : MonoBehaviour
         var touch = Touchscreen.current.primaryTouch;
         Vector2 pos = touch.position.ReadValue();
 
+        // Handle hover detection for touch (when finger is down but not clicking yet)
+        if (touch.press.isPressed)
+            HandleHover(pos);
+
         if (touch.press.wasPressedThisFrame)
             StartPress(pos);
 
@@ -70,7 +81,7 @@ public class UIRaycastInputManager : MonoBehaviour
             CheckStillOnTarget(pos);
     }
 
-    // ------- Mulai tekan -------
+    // ------- Start press -------
     void StartPress(Vector2 screenPos)
     {
         isPressing = true;
@@ -86,7 +97,7 @@ public class UIRaycastInputManager : MonoBehaviour
         delayRoutine = StartCoroutine(DelayAndTrigger(currentClickable, delay));
     }
 
-    // ------- Lepas / batal -------
+    // ------- Release / cancel -------
     void EndPress()
     {
         isPressing = false;
@@ -99,18 +110,18 @@ public class UIRaycastInputManager : MonoBehaviour
         }
     }
 
-    // ------- Cek masih di target yg sama -------
+    // ------- Check still on the same target -------
     void CheckStillOnTarget(Vector2 screenPos)
     {
         var hit = RaycastUI(screenPos);
         if (hit != currentClickable)
         {
-            // geser keluar → batal
+            // moved out → cancel
             EndPress();
         }
     }
 
-    // ------- Delay sebelum trigger -------
+    // ------- Delay before trigger -------
     IEnumerator DelayAndTrigger(RaycastClickable target, float delay)
     {
         float timer = 0f;
@@ -118,20 +129,20 @@ public class UIRaycastInputManager : MonoBehaviour
         while (timer < delay)
         {
             if (!isPressing || currentClickable != target)
-                yield break; // dibatalkan
+                yield break; // cancelled
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        // sukses hold cukup lama → panggil event
+        // successfully held long enough → call event
         target.OnRaycastClick();
 
-        // sekali pakai, reset
+        // one-time use, reset
         EndPress();
     }
 
-    // ------- Raycast ke UI -------
+    // ------- Raycast to UI -------
     RaycastClickable RaycastUI(Vector2 screenPos)
     {
         if (raycaster == null || eventSystem == null)
@@ -153,5 +164,34 @@ public class UIRaycastInputManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    // ------- Handle Hover Detection -------
+    void HandleHover(Vector2 screenPos)
+    {
+        var hoveredClickable = RaycastUI(screenPos);
+
+        // If we're hovering over a different object
+        if (hoveredClickable != currentHoveredClickable)
+        {
+            // Exit previous hover
+            if (currentHoveredEnhancer != null)
+            {
+                currentHoveredEnhancer.OnRaycastHoverExit();
+            }
+
+            // Enter new hover
+            currentHoveredClickable = hoveredClickable;
+            currentHoveredEnhancer = null;
+
+            if (currentHoveredClickable != null)
+            {
+                currentHoveredEnhancer = currentHoveredClickable.GetComponent<UIButtonEnhancer>();
+                if (currentHoveredEnhancer != null)
+                {
+                    currentHoveredEnhancer.OnRaycastHoverEnter();
+                }
+            }
+        }
     }
 }
