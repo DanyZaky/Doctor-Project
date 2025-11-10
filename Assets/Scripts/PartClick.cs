@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PartClick : MonoBehaviour, IOption
+public class PartClick : MonoBehaviour, IOption, IRaycastClickHandler
 {
     [SerializeField] string partName;
     [SerializeField] Image image;
@@ -16,6 +16,7 @@ public class PartClick : MonoBehaviour, IOption
     bool isInteractable = true;
 
     Collider2D partCollider;
+    private RaycastClickable raycastClickable;
 
     void OnEnable()
     {
@@ -25,8 +26,8 @@ public class PartClick : MonoBehaviour, IOption
             otherSideImage.color = new Color(1, 1, 1, 0);
         }
 
-        isInteractable = true; 
-        
+        isInteractable = true;
+
         if (partCollider != null)
         {
             partCollider.enabled = true;
@@ -43,23 +44,62 @@ public class PartClick : MonoBehaviour, IOption
         gameObject.layer = LayerMask.NameToLayer("RayLayer");
 
         partCollider = GetComponent<Collider2D>();
+
+        // Ensure Image is raycastable
+        if (image != null)
+        {
+            image.raycastTarget = true;
+        }
+
+        // Add RaycastClickable component if not present
+        raycastClickable = GetComponent<RaycastClickable>();
+        if (raycastClickable == null)
+        {
+            raycastClickable = gameObject.AddComponent<RaycastClickable>();
+            raycastClickable.isGameplayElement = true; // Use 0.4s delay for gameplay elements
+        }
+        if (raycastClickable.onClick == null)
+            raycastClickable.onClick = new UnityEngine.Events.UnityEvent();
+        raycastClickable.onClick.AddListener(OnRaycastClick);
     }
 
-    public void OnClicked()
+    // Called by UIRaycastInputManager via IRaycastClickHandler interface
+    public void OnRaycastClick()
     {
+        Debug.Log($"OnRaycastClick called on {partName}! isInteractable: {isInteractable}");
+
         if (!isInteractable)
+        {
+            Debug.Log($"Part {partName} is not interactable!");
             return;
+        }
 
         if (playerGameplay != null)
         {
+            Debug.Log($"Calling OnPartClicked for {partName}");
             bool isCorrect = playerGameplay.OnPartClicked(partName);
 
             if (isCorrect)
             {
+                Debug.Log($"Correct answer for {partName}!");
                 ShowCorrectFeedback();
                 partCollider.enabled = false;
             }
+            else
+            {
+                Debug.Log($"Wrong answer for {partName}");
+            }
         }
+        else
+        {
+            Debug.LogError($"PlayerGameplay is null for {partName}!");
+        }
+    }
+
+    // Legacy method for backward compatibility - can be removed if not used elsewhere
+    public void OnClicked()
+    {
+        OnRaycastClick();
     }
 
     void ShowCorrectFeedback()

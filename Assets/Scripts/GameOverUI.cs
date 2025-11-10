@@ -69,11 +69,11 @@ public class GameOverUI : MonoBehaviour
     {
         if (playAgainButton != null)
         {
-            playAgainButton.onClick.AddListener(PlayAgain);
+            playAgainButton.GetComponent<RaycastClickable>().onClick.AddListener(PlayAgain);
         }
 
-        mainMenuButton.onClick.AddListener(GoToMainMenu);
-        nextButton.onClick.AddListener(NextModel);
+        mainMenuButton.GetComponent<RaycastClickable>().onClick.AddListener(GoToMainMenu);
+        nextButton.GetComponent<RaycastClickable>().onClick.AddListener(NextModel);
     }
 
     public void ShowSinglePlayerResults(int finalScore)
