@@ -19,7 +19,6 @@ public class RaycastClickable : MonoBehaviour, IRaycastClickHandler
 
     public void OnRaycastClick()
     {
-        // Trigger animation if UIButtonEnhancer is present
         if (buttonEnhancer != null)
         {
             buttonEnhancer.OnRaycastClick();

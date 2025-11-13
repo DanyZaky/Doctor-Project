@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.InputSystem; // NEW INPUT SYSTEM
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 public class UIRaycastInputManager : MonoBehaviour
 {
     [Header("References")]
-    public GraphicRaycaster raycaster;   // from Canvas
-    public EventSystem eventSystem;      // EventSystem in the scene
+    private Camera playerCamera;
 
     [Header("Delays")]
     public float uiButtonDelay = 2f;     // for regular UI
@@ -23,144 +23,108 @@ public class UIRaycastInputManager : MonoBehaviour
     private RaycastClickable currentHoveredClickable;
     private UIButtonEnhancer currentHoveredEnhancer;
 
+    // New Input System
+    private InputAction clickAction;
+    private bool isReadyForNextClick = true;
+
+    private void Start()
+    {
+        playerCamera = Camera.main;
+    }
+
+    private void Awake()
+    {
+        clickAction = new InputAction();
+        clickAction.AddBinding("<Mouse>/leftButton")
+            .WithInteractions("press()");
+        clickAction.performed += OnMouseClick;
+    }
+
+    private void OnEnable()
+    {
+        clickAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        clickAction.Disable();
+    }
+
     void Update()
     {
-        // Priority: touch (Android/device)
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame
-            || Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed
-            || Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasReleasedThisFrame)
+        // Handle hover detection for mouse
+        if (Mouse.current != null)
         {
-            HandleTouch();
-        }
-        // Fallback: mouse (Editor / PC)
-        else if (Mouse.current != null)
-        {
-            HandleMouse();
-        }
-    }
-
-    // ------- Mouse (Editor) -------
-    void HandleMouse()
-    {
-        var mouse = Mouse.current;
-        if (mouse == null)
-            return;
-
-        Vector2 pos = mouse.position.ReadValue();
-
-        // Handle hover detection
-        HandleHover(pos);
-
-        if (mouse.leftButton.wasPressedThisFrame)
-            StartPress(pos);
-
-        if (mouse.leftButton.wasReleasedThisFrame)
-            EndPress();
-
-        if (isPressing && currentClickable != null && mouse.leftButton.isPressed)
-            CheckStillOnTarget(pos);
-    }
-
-    // ------- Touch (Android / Mobile) -------
-    void HandleTouch()
-    {
-        var touch = Touchscreen.current.primaryTouch;
-        Vector2 pos = touch.position.ReadValue();
-
-        // Handle hover detection for touch (when finger is down but not clicking yet)
-        if (touch.press.isPressed)
+            Vector2 pos = Mouse.current.position.ReadValue();
             HandleHover(pos);
-
-        if (touch.press.wasPressedThisFrame)
-            StartPress(pos);
-
-        if (touch.press.wasReleasedThisFrame)
-            EndPress();
-
-        if (isPressing && currentClickable != null && touch.press.isPressed)
-            CheckStillOnTarget(pos);
-    }
-
-    // ------- Start press -------
-    void StartPress(Vector2 screenPos)
-    {
-        isPressing = true;
-        currentClickable = RaycastUI(screenPos);
-
-        if (currentClickable == null)
-            return;
-
-        if (delayRoutine != null)
-            StopCoroutine(delayRoutine);
-
-        float delay = currentClickable.isGameplayElement ? gameplayDelay : uiButtonDelay;
-        delayRoutine = StartCoroutine(DelayAndTrigger(currentClickable, delay));
-    }
-
-    // ------- Release / cancel -------
-    void EndPress()
-    {
-        isPressing = false;
-        currentClickable = null;
-
-        if (delayRoutine != null)
-        {
-            StopCoroutine(delayRoutine);
-            delayRoutine = null;
         }
     }
 
-    // ------- Check still on the same target -------
-    void CheckStillOnTarget(Vector2 screenPos)
+    private void OnMouseClick(CallbackContext ctx)
     {
-        var hit = RaycastUI(screenPos);
-        if (hit != currentClickable)
+        if (playerCamera == null) playerCamera = Camera.main;
+
+        Ray ray = playerCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit2D rayCastHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+
+        if (rayCastHit.collider != null)
         {
-            // moved out → cancel
-            EndPress();
+            IRaycastClickHandler[] clickHandlers = rayCastHit.collider.GetComponents<IRaycastClickHandler>();
+
+            if (clickHandlers.Length > 0)
+            {
+                if (!isReadyForNextClick)
+                    return;
+
+                RaycastClickable clickable = rayCastHit.collider.GetComponent<RaycastClickable>();
+                float delay = clickable != null ? (clickable.isGameplayElement ? gameplayDelay : uiButtonDelay) : gameplayDelay;
+
+                StartCoroutine(DelayAndTriggerAllHandlers(clickHandlers, delay));
+                return;
+            }
         }
     }
 
-    // ------- Delay before trigger -------
-    IEnumerator DelayAndTrigger(RaycastClickable target, float delay)
+    IEnumerator DelayAndTriggerAllHandlers(IRaycastClickHandler[] handlers, float delay)
     {
-        float timer = 0f;
+        isReadyForNextClick = false;
+        yield return new WaitForSeconds(delay);
 
-        while (timer < delay)
+        for (int i = 0; i < handlers.Length; i++)
         {
-            if (!isPressing || currentClickable != target)
-                yield break; // cancelled
+            var handler = handlers[i];
 
-            timer += Time.deltaTime;
-            yield return null;
+            if (handler == null || (handler as MonoBehaviour) == null)
+                continue;
+
+            var handlerMono = handler as MonoBehaviour;
+            if (!handlerMono.gameObject.activeInHierarchy)
+                continue;
+
+            try
+            {
+                handler.OnRaycastClick();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Exception calling {handler.GetType().Name}: {e.Message}");
+            }
         }
 
-        // successfully held long enough → call event
-        target.OnRaycastClick();
-
-        // one-time use, reset
-        EndPress();
+        isReadyForNextClick = true;
     }
 
-    // ------- Raycast to UI -------
+    // ------- Raycast to UI using Physics2D -------
     RaycastClickable RaycastUI(Vector2 screenPos)
     {
-        if (raycaster == null || eventSystem == null)
-            return null;
+        if (playerCamera == null) return null;
 
-        var data = new PointerEventData(eventSystem)
+        Ray ray = playerCamera.ScreenPointToRay(screenPos);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+
+        if (hit.collider != null)
         {
-            position = screenPos
-        };
-
-        var results = new List<RaycastResult>();
-        raycaster.Raycast(data, results);
-
-        for (int i = 0; i < results.Count; i++)
-        {
-            var clickable = results[i].gameObject.GetComponentInParent<RaycastClickable>();
-            if (clickable != null)
-                return clickable;
+            return hit.collider.GetComponent<RaycastClickable>();
         }
 
         return null;
